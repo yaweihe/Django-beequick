@@ -1,0 +1,43 @@
+{% extends 'beequick/base.html' %}
+{% load static from staticfiles %}
+
+
+{% block linkscript%}
+    <link rel="stylesheet" type="text/css" href="{% static 'mine/css/login.css' %}" />
+    <script type="text/javascript" charset="utf-8" src="{% static 'mine/js/login.js' %}" ></script>
+{% endblock linkscript%}
+
+
+
+{% block base %}
+    <div id="login">
+        <a href="/mine/"><p>返回</p></a>
+        <div id="box">
+            <form action="/login/" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+
+                    账号: {{forms.username}}
+                    <br />
+
+
+                    {% if error.username.0 %}
+                    <span>{{error.username.0}}</span>
+                    {% endif %}
+                </div>
+                <div class="input-group">
+                    密码: {{forms.password}}
+                    <br />
+
+                    {% if error.username.0 %}
+                    <span>{{error.username.0}}</span>
+                    {% endif %}
+                </div>
+                <div>
+                    <input type="submit" value="登录">
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock base %}
